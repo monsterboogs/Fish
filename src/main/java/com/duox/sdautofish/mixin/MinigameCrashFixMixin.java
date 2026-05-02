@@ -11,10 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
 
-/**
- * Guards against crashes when FishBehaviorReloadListener.INSTANCE is null
- * (e.g. data hasn't loaded yet). Equivalent to the Forge MinigameCrashFixMixin.
- */
 @Mixin(FishBehaviorReloadListener.class)
 public class MinigameCrashFixMixin {
 
@@ -28,7 +24,7 @@ public class MinigameCrashFixMixin {
             require = 1,
             remap = false
     )
-    private void onGetBehavior(ItemStack stack, CallbackInfoReturnable<Optional<FishBehavior>> cir) {
+    private static void onGetBehavior(ItemStack stack, CallbackInfoReturnable<Optional<FishBehavior>> cir) {
         if (INSTANCE == null) {
             cir.setReturnValue(Optional.empty());
         }
