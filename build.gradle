@@ -23,7 +23,7 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:0.92.0+1.20.1"
 
     // Stardew Fishing provided at runtime by the player - compile against it only
-    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+    modCompileOnly fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 processResources {
